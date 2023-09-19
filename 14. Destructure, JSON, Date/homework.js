@@ -71,8 +71,37 @@ function moment() {
         hour = (hour.length > 1 ? "" : "0") + hour;
         str = str.replace("hh", hour);
       }
-      if (str.includes("h")) {
-        str = str.replace("h", date.getUTCHours());
+      if (str.includes("h:mm")) {
+        str = str.replace("h:mm", date.getHours() + ":" + date.getMinutes());
+      }
+      if (str.includes("ss")) {
+        str = str.replace("ss", date.getSeconds());
+      }
+      if (str.includes("a")) {
+        str = str.replace("a", date.getHours() > 12 ? "pm" : "am");
+      }
+
+      if (str.includes("LTS")) {
+        str = str.replace(
+          "LTS",
+          `${date.getHours() % 12}:${date.getMinutes()}:${date.getSeconds()} ${
+            date.getHours() > 12 ? "PM" : "AM"
+          }`
+        );
+      }
+      if (str.includes("LT")) {
+        str = str.replace(
+          "LT",
+          `${date.getHours() % 12}:${date.getMinutes()} ${
+            date.getHours() > 12 ? "PM" : "AM"
+          }`
+        );
+      }
+      if (str.includes("L")) {
+        str = str.replace(
+          "L",
+          `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
+        );
       }
 
       return str;
@@ -81,3 +110,6 @@ function moment() {
 }
 
 console.log(moment().format("MMM Do YY, h:mm:ss a"));
+console.log(moment().format("LT"));
+console.log(moment().format("LTS"));
+console.log(moment().format("L"));
