@@ -1,25 +1,9 @@
-let phonebook = [
-  {
-    id: 0,
-    name: "Abdulaziz",
-    number: "93-5108199",
-  },
-  {
-    id: 1,
-    name: "Bobomurod",
-    number: "93-547-21-63",
-  },
-  {
-    id: 2,
-    name: "Baxtishod",
-    number: "564654654",
-  },
-  {
-    id: 3,
-    name: "Najimiddin",
-    number: "+998905478912",
-  },
-];
+let phonebook = [];
+if (localStorage.getItem("Kho_jaPhoneBook")) {
+  phonebook = JSON.parse(localStorage.getItem("Kho_jaPhoneBook"));
+} else {
+  localStorage.setItem("Kho_jaPhoneBook", JSON.stringify(phonebook));
+}
 
 let phonebookTable = document.querySelector("#phonebookTable");
 
@@ -95,6 +79,7 @@ function displayPeople(arr = phonebook, edit = -1) {
     tr.append(td);
     phonebookTable.append(tr);
   }
+  localStorage.setItem("Kho_jaPhoneBook", JSON.stringify(phonebook));
 }
 
 function* generateId() {
