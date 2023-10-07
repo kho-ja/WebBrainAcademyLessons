@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phonebook</title>
+    <style>
+      body {
+        width: min(800px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+      table td,
+      table th {
+        border: 1px solid #000;
+        padding: 0.5rem 1rem;
+      }
+
+      table {
+        border: 1px solid #000;
+        width: 100%;
+      }
+      .table {
+        overflow: auto;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="phonebook">
+      <h1>Phonebook</h1>
+      <h2>Find person</h2>
+      <p>
+        <input
+          placeholder="Search by name and number"
+          type="text"
+          id="searchInput"
+        />
+      </p>
+      <h2>Add Person</h2>
+      <form id="PersonForm">
+        <p><input placeholder="name..." type="text" id="nameInput" /></p>
+        <p>
+          <input placeholder="Phone number..." type="text" id="numberInput" />
+        </p>
+        <button type="submit">Add</button>
+      </form>
+      <h2>People in phonebook</h2>
+      <p align="right">
+        <select name="select" id="filterSelect">
+          <option value="id">id</option>
+          <option value="name">name</option>
+          <option value="number">number</option>
+        </select>
+      </p>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>number</th>
+              <th>edit</th>
+            </tr>
+          </thead>
+          <tbody id="phonebookTable"></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
