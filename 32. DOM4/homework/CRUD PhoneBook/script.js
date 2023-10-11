@@ -83,7 +83,7 @@ function displayPeople(arr = phonebook, edit = -1) {
 }
 
 function* generateId() {
-  let i = Math.max(...phonebook.map((v) => v.id));
+  let i = Math.max(0, ...phonebook.map((v) => v.id));
   while (true) {
     i++;
     yield i;
